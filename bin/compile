@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+set -o errexit    # always exit on error
+set -o pipefail   # dont ignore exit codes when piping output
+set -o nounset    # fail on unset variables
+
 build_pack_path=$(cd $(dirname $(dirname $0)); pwd)
 build_path=$(cd $1 && pwd)
 
-cp $build_path/.profile.d/elixir_buildpack_paths.sh $build_pack_path/export
+echo "export PATH=\$build_path/.platform_tools/elixir/bin:\$PATH" > $build_pack_path/export
 
 source $build_pack_path/export
 
