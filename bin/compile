@@ -4,3 +4,8 @@ build_pack_path=$(cd $(dirname $(dirname $0)); pwd)
 build_path=$(cd $1 && pwd)
 
 cp $build_path/.profile.d/elixir_buildpack_paths.sh $build_pack_path/export
+
+source $build_path_pack/export
+
+type mix
+which mix
