@@ -7,6 +7,8 @@ set -o nounset    # fail on unset variables
 build_pack_path=$(cd $(dirname $(dirname $0)); pwd)
 build_path=$(cd $1 && pwd)
 
+source $build_path/.profile.d/elixir_buildpack_paths.sh
+
 echo "export PATH=$build_path/.platform_tools/elixir/bin:\$PATH" > $build_pack_path/export
 echo "export MIX_ENV=$MIX_ENV" >> $build_pack_path/export
 
